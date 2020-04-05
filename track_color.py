@@ -57,10 +57,10 @@ while True:
         trackedObject = (abs(center[0] - lastCenter[0]) < 10 and abs(center[1] - lastCenter[1]) < 10) or lastCenter == (0, 0)
 
         # only proceed if the radius meets a minimum size and it's part of the same object
-        #if radius > 3:
+        if radius > 3:
             # draw the circle and centroid on the frame
-            #cv2.circle(frame, (int(x), int(y)), int(radius), (0, 255, 255), 2)
-            #cv2.circle(frame, center, 5, (0, 0, 255), -1)
+            cv2.circle(frame, (int(x), int(y)), int(radius), (0, 255, 255), 2)
+            cv2.circle(frame, center, 5, (0, 0, 255), -1)
 
         # if the largest contour is not the object we're currently tracking, move to next frame
         if not trackedObject:
@@ -78,7 +78,7 @@ while True:
             continue
         # otherwise, compute the thickness of the line and draw the connecting lines
         thickness = int(np.sqrt(args["buffer"] / float(i + 1)) * 2.5)
-        #cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
+        cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
 
     # show the frame to our screen
     cv2.imshow("Frame", frame)
