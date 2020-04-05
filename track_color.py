@@ -63,8 +63,8 @@ while True:
             cv2.circle(frame, center, 5, (0, 0, 255), -1)
 
         # if the largest contour is not the object we're currently tracking, move to next frame
-        if not trackedObject:
-            continue
+        #if not trackedObject:
+        #    continue
 
         lastCenter = center
 
@@ -78,7 +78,7 @@ while True:
             continue
         # otherwise, compute the thickness of the line and draw the connecting lines
         thickness = int(np.sqrt(args["buffer"] / float(i + 1)) * 2.5)
-        cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
+        cv2.line(hsv, pts[i - 1], pts[i], (0, 0, 255), thickness)
 
     # show the frame to our screen
     cv2.imshow("Frame", frame)
