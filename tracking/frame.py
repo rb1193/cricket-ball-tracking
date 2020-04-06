@@ -5,7 +5,7 @@ import numpy
 
 def preprocess(frame):
     """ blur frame and convert it to the HSV color space """
-    blurred = cv2.GaussianBlur(frame, (5, 5), 0)
+    blurred = cv2.GaussianBlur(frame, (9, 9), 0)
     return cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
 
 def mask_color(hsv, lower, upper):

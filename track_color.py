@@ -9,10 +9,7 @@ import tracking.frame
 import tracking.video
 
 # parse CLI arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("-v", "--video", help="path to the video file")
-ap.add_argument("-b", "--buffer", type=int, default=128, help="max buffer size (affects tracking line length)")
-args = vars(ap.parse_args())
+args = tracking.cli.get_args()
 
 # initialise list of tracked points
 pts = deque(maxlen=args["buffer"])
@@ -21,7 +18,7 @@ pts = deque(maxlen=args["buffer"])
 vs = cv2.VideoCapture(args["video"])
 
 # Perform ball tracking on the video
-tracking.video.track_ball_by_color(vs, pts)
+tracking.video.track_ball_by_color(vs, pts, args["width"])
 
 # Stop video processing
 vs.release()
